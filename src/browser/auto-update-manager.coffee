@@ -15,16 +15,10 @@ module.exports =
 class AutoUpdateManager
   _.extend @prototype, EventEmitter.prototype
 
-  constructor: (@version, @testMode) ->
+  constructor: (@version, @testMode, @disabled) ->
     @state = IdleState
-    if process.platform is 'win32'
-      # Squirrel for Windows can't handle query params
-      # https://github.com/Squirrel/Squirrel.Windows/issues/132
-      @feedUrl = 'https://atom.io/api/updates'
-    else
-      @iconPath = path.resolve(__dirname, '..', '..', 'resources', 'atom.png')
-      @feedUrl = "https://atom.io/api/updates?version=#{@version}"
-
+    @iconPath = path.resolve(__dirname, '..', '..', 'resources', 'atom.png')
+    @feedUrl = "https://atom.io/api/updates?version=#{@version}"
     process.nextTick => @setupAutoUpdater()
 
   setupAutoUpdater: ->
@@ -52,14 +46,18 @@ class AutoUpdateManager
       @setState(UpdateAvailableState)
       @emitUpdateAvailableEvent(@getWindows()...)
 
-    # Only released versions should check for updates.
-    @scheduleUpdateCheck() unless /\w{7}/.test(@version)
+    # Only check for updates periodically if enabled and running in release
+    # version.
+    @scheduleUpdateCheck() unless /\w{7}/.test(@version) or @disabled
 
     switch process.platform
       when 'win32'
         @setState(UnsupportedState) unless autoUpdater.supportsUpdates()
       when 'linux'
         @setState(UnsupportedState)
+
+  isDisabled: ->
+    @disabled
 
   emitUpdateAvailableEvent: (windows...) ->
     return unless @releaseVersion?

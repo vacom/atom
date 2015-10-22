@@ -64,9 +64,6 @@
     ModuleCache.register(loadSettings)
     ModuleCache.add(loadSettings.resourcePath)
 
-    // Only include deprecated APIs when running core spec
-    require('grim').includeDeprecatedAPIs = isRunningCoreSpecs(loadSettings)
-
     // Start the crash reporter before anything else.
     require('crash-reporter').start({
       productName: 'Atom',
@@ -79,7 +76,7 @@
     setupVmCompatibility()
     setupCsonCache(CompileCache.getCacheDirectory())
 
-    require(loadSettings.bootstrapScript)
+    require(loadSettings.windowInitializationScript)
     require('ipc').sendChannel('window-command', 'window:loaded')
   }
 
@@ -144,7 +141,7 @@
     } else {
       currentWindow.openDevTools()
       currentWindow.once('devtools-opened', function () {
-        setTimeout(profile, 100)
+        setTimeout(profile, 1000)
       })
     }
   }
@@ -171,7 +168,7 @@
 
     var backgroundStylesheet = document.createElement('style')
     backgroundStylesheet.type = 'text/css'
-    backgroundStylesheet.innerText = 'html, body { background: ' + backgroundColor + '; }'
+    backgroundStylesheet.innerText = 'html, body { background: ' + backgroundColor + ' !important; }'
     document.head.appendChild(backgroundStylesheet)
 
     // Remove once the page loads
@@ -182,14 +179,6 @@
         backgroundStylesheet = null
       }, 1000)
     }, false)
-  }
-
-  function isRunningCoreSpecs (loadSettings) {
-    return !!(loadSettings &&
-      loadSettings.isSpec &&
-      loadSettings.specDirectory &&
-      loadSettings.resourcePath &&
-      path.dirname(loadSettings.specDirectory) === loadSettings.resourcePath)
   }
 
   parseLoadSettings()

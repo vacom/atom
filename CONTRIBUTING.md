@@ -13,6 +13,7 @@ By participating, you are expected to uphold this code. Please report unacceptab
 #### Table Of Contents
 
 * [Submitting Issues](#submitting-issues)
+* [Your First Contribution](#your-first-contribution)
 * [Pull Requests](#pull-requests)
 * [Git Commit Messages](#git-commit-messages)
 * [CoffeeScript Styleguide](#coffeescript-styleguide)
@@ -59,6 +60,13 @@ you're having an issue with Atom core, open an issue on this repository.
 
 For more information on how to work with Atom's official packages, see
 [Contributing to Atom Packages](https://github.com/atom/atom/blob/master/docs/contributing-to-packages.md)
+
+## Your First Contribution
+
+Unsure where to begin contributing to Atom? You can start by looking through these `beginner` and `help-wanted` issues:
+
+* [Beginner issues][beginner]
+* [Help wanted issues][help-wanted]
 
 ## Pull Requests
 
@@ -234,6 +242,7 @@ Please open an issue on `atom/atom` if you have suggestions for new labels, and 
 | `installer` | [search][search-atom-repo-label-installer] | [search][search-atom-org-label-installer] | Related to the Atom installers for different OSes. |
 | `auto-updater` | [search][search-atom-repo-label-auto-updater] | [search][search-atom-org-label-auto-updater] | Related to the auto-updater for different OSes. |
 | `deprecation-help` | [search][search-atom-repo-label-deprecation-help] | [search][search-atom-org-label-deprecation-help] | Issues for helping package authors remove usage of deprecated APIs in packages. |
+| `electron` | [search][search-atom-repo-label-electron] | [search][search-atom-org-label-electron] | Issues that require changes to [Electron](https://electron.atom.io) to fix or implement. |
 
 #### Core Team Project Management
 
@@ -329,6 +338,8 @@ Please open an issue on `atom/atom` if you have suggestions for new labels, and 
 [search-atom-org-label-auto-updater]: https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Aatom+label%3Aauto-updater
 [search-atom-repo-label-deprecation-help]: https://github.com/issues?q=is%3Aopen+is%3Aissue+repo%3Aatom%2Fatom+label%3Adeprecation-help
 [search-atom-org-label-deprecation-help]: https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Aatom+label%3Adeprecation-help
+[search-atom-repo-label-electron]: https://github.com/issues?q=is%3Aissue+repo%3Aatom%2Fatom+is%3Aopen+label%3Aelectron
+[search-atom-org-label-electron]: https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Aatom+label%3Aelectron
 [search-atom-repo-label-on-deck]: https://github.com/issues?q=is%3Aopen+is%3Aissue+repo%3Aatom%2Fatom+label%3Aon-deck
 [search-atom-org-label-on-deck]: https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Aatom+label%3Aon-deck
 [search-atom-repo-label-in-progress]: https://github.com/issues?q=is%3Aopen+is%3Aissue+repo%3Aatom%2Fatom+label%3Ain-progress
@@ -349,3 +360,6 @@ Please open an issue on `atom/atom` if you have suggestions for new labels, and 
 [search-atom-org-label-requires-changes]: https://github.com/pulls?q=is%3Aopen+is%3Apr+user%3Aatom+label%3Arequires-changes
 [search-atom-repo-label-needs-testing]: https://github.com/pulls?q=is%3Aopen+is%3Apr+repo%3Aatom%2Fatom+label%3Aneeds-testing
 [search-atom-org-label-needs-testing]: https://github.com/pulls?q=is%3Aopen+is%3Apr+user%3Aatom+label%3Aneeds-testing
+
+[beginner]:https://github.com/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+label%3Abeginner+label%3Ahelp-wanted+user%3Aatom+sort%3Acomments-desc
+[help-wanted]:https://github.com/issues?q=is%3Aopen+is%3Aissue+label%3Ahelp-wanted+user%3Aatom+sort%3Acomments-desc
